@@ -19,9 +19,9 @@ import java.util.HashMap;
  */
 public class WaehrungskursItem
 {
-	private Date timeStamp;
-	private WaehrungenEnum baseCurrencyEnum;
-	private final HashMap<WaehrungenEnum, Double> ratesMap = new HashMap<WaehrungenEnum, Double>();
+	private final Date timeStamp;
+	private final WaehrungenEnum baseCurrencyEnum;
+	private final HashMap<WaehrungenEnum, Double> ratesMap = new HashMap<>();
 	public WaehrungskursItem(
 								Date timeStamp,
 								WaehrungenEnum baseCurrencyEnum)
