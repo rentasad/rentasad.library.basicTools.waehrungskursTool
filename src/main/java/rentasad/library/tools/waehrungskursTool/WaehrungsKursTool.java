@@ -32,17 +32,15 @@ public class WaehrungsKursTool
     public WaehrungsKursTool() throws MalformedURLException
     {
         super();
-        this.jsonURLString = new String("https://openexchangerates.org/api/latest.json?app_id=88170157fc564715821f0f7e54f6faf8");
+        this.jsonURLString = "https://openexchangerates.org/api/latest.json?app_id=88170157fc564715821f0f7e54f6faf8";
     }
 
     /**
-     * 
-     * Description: read a http URL and response a String with readed content
-     * 
-     * @param urlString
-     * @return
-     * @throws IOException
-     *             Creation: 15.09.2015 by mst
+     * Reads the content of the specified URL and returns it as a string.
+     *
+     * @param urlString the URL to read from
+     * @return the content read from the URL as a string
+     * @throws IOException if an I/O exception occurs
      */
     public static String readUrl(String urlString) throws IOException
     {
@@ -51,7 +49,7 @@ public class WaehrungsKursTool
         {
             URL url = new URL(urlString);
             reader = new BufferedReader(new InputStreamReader(url.openStream()));
-            StringBuffer buffer = new StringBuffer();
+            StringBuilder buffer = new StringBuilder();
             int read;
             char[] chars = new char[1024];
             while ((read = reader.read(chars)) != -1)
@@ -71,11 +69,10 @@ public class WaehrungsKursTool
     }
 
     /**
-     * 
-     * Description: Ermittelt aus openExchangeRatesJsonResult das passende WaehrungskursItem
-     * 
-     * @throws IOException
-     *             Creation: 15.09.2015 by mst
+     * Extracts a WaehrungskursItem from a JSON string fetched from Open Exchange Rates.
+     *
+     * @param jsonObjectString JSON string containing currency rates data.
+     * @return A WaehrungskursItem containing the currency rates and base currency information.
      */
     public WaehrungskursItem getWaehrungsKursItemFromOpenExchangeRates(String jsonObjectString)
     {

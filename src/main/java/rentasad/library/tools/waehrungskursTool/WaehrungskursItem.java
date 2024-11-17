@@ -51,22 +51,21 @@ public class WaehrungskursItem
 	{
 		return baseCurrencyEnum;
 	}
+
 	/**
-	 * 
-	 * Description:ueber die Basiswaehrung wird von gewuenschter Quell- zu Zielwaehrung umgerechnet.
-	 * 
-	 * @param sourceCurrency
-	 * @param targetCurrency
-	 * @param sourceValue
-	 * @return
-	 * Creation: 16.09.2015 by mst
+	 * Converts an amount from a source currency to a target currency.
+	 * (ueber die Basiswaehrung wird von gewuenschter Quell- zu Zielwaehrung umgerechnet.)
+	 * @param sourceCurrency the currency to convert from
+	 * @param targetCurrency the currency to convert to
+	 * @param sourceValueDouble the amount in the source currency
+	 * @return the equivalent amount in the target currency
 	 */
 	public double convertCurrency(WaehrungenEnum sourceCurrency, WaehrungenEnum targetCurrency, double sourceValueDouble)
 	{
 		
 		BigDecimal sourceValue = new BigDecimal(sourceValueDouble);
-		BigDecimal sourceRate = new BigDecimal(this.ratesMap.get(sourceCurrency));
-		BigDecimal targetRate = new BigDecimal(this.ratesMap.get(targetCurrency));
+		BigDecimal sourceRate = BigDecimal.valueOf(this.ratesMap.get(sourceCurrency));
+		BigDecimal targetRate = BigDecimal.valueOf(this.ratesMap.get(targetCurrency));
 		/*
 		 * Umrechnen in USD (Base-Currency)
 		 */
