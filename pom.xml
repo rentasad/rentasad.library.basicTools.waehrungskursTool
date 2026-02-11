@@ -5,7 +5,7 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>rentasad.library</groupId>
 	<artifactId>rentasad.library.basicTools.waehrungskursTool</artifactId>
-	<version>4.0.1</version>
+	<version>4.0.2</version>
 	<name>rentasad.library.basicTools.waehrungskursTool</name>
 	<url>https://github.com/rentasad/rentasad.library.basicTools.waehrungskursTool</url>
 	<properties>
@@ -29,7 +29,7 @@
 		<dependency>
 			<groupId>org.junit.jupiter</groupId>
 			<artifactId>junit-jupiter-engine</artifactId>
-			<version>5.9.0</version>
+			<version>5.10.3</version>
 			<scope>test</scope>
 		</dependency>
 			<!-- https://mvnrepository.com/artifact/org.json/json -->

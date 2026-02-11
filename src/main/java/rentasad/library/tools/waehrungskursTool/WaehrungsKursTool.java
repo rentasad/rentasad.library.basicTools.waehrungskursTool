@@ -47,13 +47,16 @@ public class WaehrungsKursTool
      */
     public static String readUrl(String urlString) throws IOException, InterruptedException
     {
+        HttpRequest request = HttpRequest.newBuilder()
+                .uri(URI.create(urlString))
+                .timeout(Duration.ofSeconds(HTTP_TIMEOUT_SECONDS))
+                .GET()
+                .build();
+
         try (HttpClient client = HttpClient.newBuilder()
                 .connectTimeout(Duration.ofSeconds(HTTP_TIMEOUT_SECONDS))
                 .build())
         {
-
-            HttpRequest request = HttpRequest.newBuilder().uri(URI.create(urlString)).timeout(Duration.ofSeconds(HTTP_TIMEOUT_SECONDS)).GET().build();
-
             HttpResponse<String> response = client.send(request, HttpResponse.BodyHandlers.ofString());
 
             if (response.statusCode() != 200)
