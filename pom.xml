@@ -5,7 +5,7 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>rentasad.library</groupId>
 	<artifactId>rentasad.library.basicTools.waehrungskursTool</artifactId>
-	<version>4.0.0</version>
+	<version>4.0.1</version>
 	<name>rentasad.library.basicTools.waehrungskursTool</name>
 	<url>https://github.com/rentasad/rentasad.library.basicTools.waehrungskursTool</url>
 	<properties>

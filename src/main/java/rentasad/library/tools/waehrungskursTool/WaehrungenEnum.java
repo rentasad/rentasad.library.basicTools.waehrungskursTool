@@ -331,325 +331,167 @@ public enum WaehrungenEnum
 
 	public static WaehrungenEnum getEnumFromString(String enumName)
 	{
-		switch (enumName)
+		return switch (enumName)
 		{
-			case "AED":
-				return WaehrungenEnum.AED;
-			case "AFN":
-				return WaehrungenEnum.AFN;
-			case "ALL":
-				return WaehrungenEnum.ALL;
-			case "AMD":
-				return WaehrungenEnum.AMD;
-			case "ANG":
-				return WaehrungenEnum.ANG;
-			case "AOA":
-				return WaehrungenEnum.AOA;
-			case "ARS":
-				return WaehrungenEnum.ARS;
-			case "AUD":
-				return WaehrungenEnum.AUD;
-			case "AWG":
-				return WaehrungenEnum.AWG;
-			case "AZN":
-				return WaehrungenEnum.AZN;
-			case "BAM":
-				return WaehrungenEnum.BAM;
-			case "BBD":
-				return WaehrungenEnum.BBD;
-			case "BDT":
-				return WaehrungenEnum.BDT;
-			case "BGN":
-				return WaehrungenEnum.BGN;
-			case "BHD":
-				return WaehrungenEnum.BHD;
-			case "BIF":
-				return WaehrungenEnum.BIF;
-			case "BMD":
-				return WaehrungenEnum.BMD;
-			case "BND":
-				return WaehrungenEnum.BND;
-			case "BOB":
-				return WaehrungenEnum.BOB;
-			case "BRL":
-				return WaehrungenEnum.BRL;
-			case "BSD":
-				return WaehrungenEnum.BSD;
-			case "BTN":
-				return WaehrungenEnum.BTN;
-			case "BWP":
-				return WaehrungenEnum.BWP;
-//			case "BYR":
-//				return WaehrungenEnum.BYR;
-			case "BZD":
-				return WaehrungenEnum.BZD;
-			case "CAD":
-				return WaehrungenEnum.CAD;
-			case "CDF":
-				return WaehrungenEnum.CDF;
-			case "CHF":
-				return WaehrungenEnum.CHF;
-			case "CLF":
-				return WaehrungenEnum.CLF;
-			case "CLP":
-				return WaehrungenEnum.CLP;
-			case "CNY":
-				return WaehrungenEnum.CNY;
-			case "COP":
-				return WaehrungenEnum.COP;
-			case "CRC":
-				return WaehrungenEnum.CRC;
-			case "CUC":
-				return WaehrungenEnum.CUC;
-			case "CUP":
-				return WaehrungenEnum.CUP;
-			case "CVE":
-				return WaehrungenEnum.CVE;
-			case "CZK":
-				return WaehrungenEnum.CZK;
-			case "DJF":
-				return WaehrungenEnum.DJF;
-			case "DKK":
-				return WaehrungenEnum.DKK;
-			case "DOP":
-				return WaehrungenEnum.DOP;
-			case "DZD":
-				return WaehrungenEnum.DZD;
-			case "EGP":
-				return WaehrungenEnum.EGP;
-			case "ERN":
-				return WaehrungenEnum.ERN;
-			case "ETB":
-				return WaehrungenEnum.ETB;
-			case "EUR":
-				return WaehrungenEnum.EUR;
-			case "FJD":
-				return WaehrungenEnum.FJD;
-			case "FKP":
-				return WaehrungenEnum.FKP;
-			case "GBP":
-				return WaehrungenEnum.GBP;
-			case "GEL":
-				return WaehrungenEnum.GEL;
-			case "GHS":
-				return WaehrungenEnum.GHS;
-			case "GIP":
-				return WaehrungenEnum.GIP;
-			case "GMD":
-				return WaehrungenEnum.GMD;
-			case "GNF":
-				return WaehrungenEnum.GNF;
-			case "GTQ":
-				return WaehrungenEnum.GTQ;
-			case "GYD":
-				return WaehrungenEnum.GYD;
-			case "HKD":
-				return WaehrungenEnum.HKD;
-			case "HNL":
-				return WaehrungenEnum.HNL;
-			case "HRK":
-				return WaehrungenEnum.HRK;
-			case "HTG":
-				return WaehrungenEnum.HTG;
-			case "HUF":
-				return WaehrungenEnum.HUF;
-			case "IDR":
-				return WaehrungenEnum.IDR;
-			case "ILS":
-				return WaehrungenEnum.ILS;
-			case "INR":
-				return WaehrungenEnum.INR;
-			case "IQD":
-				return WaehrungenEnum.IQD;
-			case "IRR":
-				return WaehrungenEnum.IRR;
-			case "ISK":
-				return WaehrungenEnum.ISK;
-			case "JMD":
-				return WaehrungenEnum.JMD;
-			case "JOD":
-				return WaehrungenEnum.JOD;
-			case "JPY":
-				return WaehrungenEnum.JPY;
-			case "KES":
-				return WaehrungenEnum.KES;
-			case "KGS":
-				return WaehrungenEnum.KGS;
-			case "KHR":
-				return WaehrungenEnum.KHR;
-			case "KMF":
-				return WaehrungenEnum.KMF;
-			case "KPW":
-				return WaehrungenEnum.KPW;
-			case "KRW":
-				return WaehrungenEnum.KRW;
-			case "KWD":
-				return WaehrungenEnum.KWD;
-			case "KYD":
-				return WaehrungenEnum.KYD;
-			case "KZT":
-				return WaehrungenEnum.KZT;
-			case "LAK":
-				return WaehrungenEnum.LAK;
-			case "LBP":
-				return WaehrungenEnum.LBP;
-			case "LKR":
-				return WaehrungenEnum.LKR;
-			case "LRD":
-				return WaehrungenEnum.LRD;
-			case "LSL":
-				return WaehrungenEnum.LSL;
-			case "LYD":
-				return WaehrungenEnum.LYD;
-			case "MAD":
-				return WaehrungenEnum.MAD;
-			case "MDL":
-				return WaehrungenEnum.MDL;
-			case "MGA":
-				return WaehrungenEnum.MGA;
-			case "MKD":
-				return WaehrungenEnum.MKD;
-			case "MMK":
-				return WaehrungenEnum.MMK;
-			case "MNT":
-				return WaehrungenEnum.MNT;
-			case "MOP":
-				return WaehrungenEnum.MOP;
-			case "MRO":
-				return WaehrungenEnum.MRO;
-			case "MUR":
-				return WaehrungenEnum.MUR;
-			case "MVR":
-				return WaehrungenEnum.MVR;
-			case "MWK":
-				return WaehrungenEnum.MWK;
-			case "MXN":
-				return WaehrungenEnum.MXN;
-			case "MYR":
-				return WaehrungenEnum.MYR;
-			case "MZN":
-				return WaehrungenEnum.MZN;
-			case "NAD":
-				return WaehrungenEnum.NAD;
-			case "NGN":
-				return WaehrungenEnum.NGN;
-			case "NIO":
-				return WaehrungenEnum.NIO;
-			case "NOK":
-				return WaehrungenEnum.NOK;
-			case "NPR":
-				return WaehrungenEnum.NPR;
-			case "NZD":
-				return WaehrungenEnum.NZD;
-			case "OMR":
-				return WaehrungenEnum.OMR;
-			case "PAB":
-				return WaehrungenEnum.PAB;
-			case "PEN":
-				return WaehrungenEnum.PEN;
-			case "PGK":
-				return WaehrungenEnum.PGK;
-			case "PHP":
-				return WaehrungenEnum.PHP;
-			case "PKR":
-				return WaehrungenEnum.PKR;
-			case "PLN":
-				return WaehrungenEnum.PLN;
-			case "PYG":
-				return WaehrungenEnum.PYG;
-			case "QAR":
-				return WaehrungenEnum.QAR;
-			case "RON":
-				return WaehrungenEnum.RON;
-			case "RSD":
-				return WaehrungenEnum.RSD;
-			case "RUB":
-				return WaehrungenEnum.RUB;
-			case "RWF":
-				return WaehrungenEnum.RWF;
-			case "SAR":
-				return WaehrungenEnum.SAR;
-			case "SBD":
-				return WaehrungenEnum.SBD;
-			case "SCR":
-				return WaehrungenEnum.SCR;
-			case "SDG":
-				return WaehrungenEnum.SDG;
-			case "SEK":
-				return WaehrungenEnum.SEK;
-			case "SGD":
-				return WaehrungenEnum.SGD;
-			case "SHP":
-				return WaehrungenEnum.SHP;
-			case "SLL":
-				return WaehrungenEnum.SLL;
-			case "SOS":
-				return WaehrungenEnum.SOS;
-			case "SRD":
-				return WaehrungenEnum.SRD;
-			case "STD":
-				return WaehrungenEnum.STD;
-			case "SVC":
-				return WaehrungenEnum.SVC;
-			case "SYP":
-				return WaehrungenEnum.SYP;
-			case "SZL":
-				return WaehrungenEnum.SZL;
-			case "THB":
-				return WaehrungenEnum.THB;
-			case "TJS":
-				return WaehrungenEnum.TJS;
-			case "TMT":
-				return WaehrungenEnum.TMT;
-			case "TND":
-				return WaehrungenEnum.TND;
-			case "TOP":
-				return WaehrungenEnum.TOP;
-			case "TRY":
-				return WaehrungenEnum.TRY;
-			case "TTD":
-				return WaehrungenEnum.TTD;
-			case "TWD":
-				return WaehrungenEnum.TWD;
-			case "TZS":
-				return WaehrungenEnum.TZS;
-			case "UAH":
-				return WaehrungenEnum.UAH;
-			case "UGX":
-				return WaehrungenEnum.UGX;
-			case "USD":
-				return WaehrungenEnum.USD;
-			case "UYU":
-				return WaehrungenEnum.UYU;
-			case "UZS":
-				return WaehrungenEnum.UZS;
-			case "VEF":
-				return WaehrungenEnum.VEF;
-			case "VND":
-				return WaehrungenEnum.VND;
-			case "VUV":
-				return WaehrungenEnum.VUV;
-			case "WST":
-				return WaehrungenEnum.WST;
-			case "XAF":
-				return WaehrungenEnum.XAF;
-			case "XCD":
-				return WaehrungenEnum.XCD;
-			case "XOF":
-				return WaehrungenEnum.XOF;
-			case "XPF":
-				return WaehrungenEnum.XPF;
-			case "YER":
-				return WaehrungenEnum.YER;
-			case "ZAR":
-				return WaehrungenEnum.ZAR;
-			case "ZMW":
-				return WaehrungenEnum.ZMW;
-			case "ZWL":
-				return WaehrungenEnum.ZWL;
-
-			default:
-				throw new IllegalArgumentException(enumName);
-		}
+			case "AED" -> WaehrungenEnum.AED;
+			case "AFN" -> WaehrungenEnum.AFN;
+			case "ALL" -> WaehrungenEnum.ALL;
+			case "AMD" -> WaehrungenEnum.AMD;
+			case "ANG" -> WaehrungenEnum.ANG;
+			case "AOA" -> WaehrungenEnum.AOA;
+			case "ARS" -> WaehrungenEnum.ARS;
+			case "AUD" -> WaehrungenEnum.AUD;
+			case "AWG" -> WaehrungenEnum.AWG;
+			case "AZN" -> WaehrungenEnum.AZN;
+			case "BAM" -> WaehrungenEnum.BAM;
+			case "BBD" -> WaehrungenEnum.BBD;
+			case "BDT" -> WaehrungenEnum.BDT;
+			case "BGN" -> WaehrungenEnum.BGN;
+			case "BHD" -> WaehrungenEnum.BHD;
+			case "BIF" -> WaehrungenEnum.BIF;
+			case "BMD" -> WaehrungenEnum.BMD;
+			case "BND" -> WaehrungenEnum.BND;
+			case "BOB" -> WaehrungenEnum.BOB;
+			case "BRL" -> WaehrungenEnum.BRL;
+			case "BSD" -> WaehrungenEnum.BSD;
+			case "BTN" -> WaehrungenEnum.BTN;
+			case "BWP" -> WaehrungenEnum.BWP;
+			//			case "BYR":
+			//				return WaehrungenEnum.BYR;
+			case "BZD" -> WaehrungenEnum.BZD;
+			case "CAD" -> WaehrungenEnum.CAD;
+			case "CDF" -> WaehrungenEnum.CDF;
+			case "CHF" -> WaehrungenEnum.CHF;
+			case "CLF" -> WaehrungenEnum.CLF;
+			case "CLP" -> WaehrungenEnum.CLP;
+			case "CNY" -> WaehrungenEnum.CNY;
+			case "COP" -> WaehrungenEnum.COP;
+			case "CRC" -> WaehrungenEnum.CRC;
+			case "CUC" -> WaehrungenEnum.CUC;
+			case "CUP" -> WaehrungenEnum.CUP;
+			case "CVE" -> WaehrungenEnum.CVE;
+			case "CZK" -> WaehrungenEnum.CZK;
+			case "DJF" -> WaehrungenEnum.DJF;
+			case "DKK" -> WaehrungenEnum.DKK;
+			case "DOP" -> WaehrungenEnum.DOP;
+			case "DZD" -> WaehrungenEnum.DZD;
+			case "EGP" -> WaehrungenEnum.EGP;
+			case "ERN" -> WaehrungenEnum.ERN;
+			case "ETB" -> WaehrungenEnum.ETB;
+			case "EUR" -> WaehrungenEnum.EUR;
+			case "FJD" -> WaehrungenEnum.FJD;
+			case "FKP" -> WaehrungenEnum.FKP;
+			case "GBP" -> WaehrungenEnum.GBP;
+			case "GEL" -> WaehrungenEnum.GEL;
+			case "GHS" -> WaehrungenEnum.GHS;
+			case "GIP" -> WaehrungenEnum.GIP;
+			case "GMD" -> WaehrungenEnum.GMD;
+			case "GNF" -> WaehrungenEnum.GNF;
+			case "GTQ" -> WaehrungenEnum.GTQ;
+			case "GYD" -> WaehrungenEnum.GYD;
+			case "HKD" -> WaehrungenEnum.HKD;
+			case "HNL" -> WaehrungenEnum.HNL;
+			case "HRK" -> WaehrungenEnum.HRK;
+			case "HTG" -> WaehrungenEnum.HTG;
+			case "HUF" -> WaehrungenEnum.HUF;
+			case "IDR" -> WaehrungenEnum.IDR;
+			case "ILS" -> WaehrungenEnum.ILS;
+			case "INR" -> WaehrungenEnum.INR;
+			case "IQD" -> WaehrungenEnum.IQD;
+			case "IRR" -> WaehrungenEnum.IRR;
+			case "ISK" -> WaehrungenEnum.ISK;
+			case "JMD" -> WaehrungenEnum.JMD;
+			case "JOD" -> WaehrungenEnum.JOD;
+			case "JPY" -> WaehrungenEnum.JPY;
+			case "KES" -> WaehrungenEnum.KES;
+			case "KGS" -> WaehrungenEnum.KGS;
+			case "KHR" -> WaehrungenEnum.KHR;
+			case "KMF" -> WaehrungenEnum.KMF;
+			case "KPW" -> WaehrungenEnum.KPW;
+			case "KRW" -> WaehrungenEnum.KRW;
+			case "KWD" -> WaehrungenEnum.KWD;
+			case "KYD" -> WaehrungenEnum.KYD;
+			case "KZT" -> WaehrungenEnum.KZT;
+			case "LAK" -> WaehrungenEnum.LAK;
+			case "LBP" -> WaehrungenEnum.LBP;
+			case "LKR" -> WaehrungenEnum.LKR;
+			case "LRD" -> WaehrungenEnum.LRD;
+			case "LSL" -> WaehrungenEnum.LSL;
+			case "LYD" -> WaehrungenEnum.LYD;
+			case "MAD" -> WaehrungenEnum.MAD;
+			case "MDL" -> WaehrungenEnum.MDL;
+			case "MGA" -> WaehrungenEnum.MGA;
+			case "MKD" -> WaehrungenEnum.MKD;
+			case "MMK" -> WaehrungenEnum.MMK;
+			case "MNT" -> WaehrungenEnum.MNT;
+			case "MOP" -> WaehrungenEnum.MOP;
+			case "MRO" -> WaehrungenEnum.MRO;
+			case "MUR" -> WaehrungenEnum.MUR;
+			case "MVR" -> WaehrungenEnum.MVR;
+			case "MWK" -> WaehrungenEnum.MWK;
+			case "MXN" -> WaehrungenEnum.MXN;
+			case "MYR" -> WaehrungenEnum.MYR;
+			case "MZN" -> WaehrungenEnum.MZN;
+			case "NAD" -> WaehrungenEnum.NAD;
+			case "NGN" -> WaehrungenEnum.NGN;
+			case "NIO" -> WaehrungenEnum.NIO;
+			case "NOK" -> WaehrungenEnum.NOK;
+			case "NPR" -> WaehrungenEnum.NPR;
+			case "NZD" -> WaehrungenEnum.NZD;
+			case "OMR" -> WaehrungenEnum.OMR;
+			case "PAB" -> WaehrungenEnum.PAB;
+			case "PEN" -> WaehrungenEnum.PEN;
+			case "PGK" -> WaehrungenEnum.PGK;
+			case "PHP" -> WaehrungenEnum.PHP;
+			case "PKR" -> WaehrungenEnum.PKR;
+			case "PLN" -> WaehrungenEnum.PLN;
+			case "PYG" -> WaehrungenEnum.PYG;
+			case "QAR" -> WaehrungenEnum.QAR;
+			case "RON" -> WaehrungenEnum.RON;
+			case "RSD" -> WaehrungenEnum.RSD;
+			case "RUB" -> WaehrungenEnum.RUB;
+			case "RWF" -> WaehrungenEnum.RWF;
+			case "SAR" -> WaehrungenEnum.SAR;
+			case "SBD" -> WaehrungenEnum.SBD;
+			case "SCR" -> WaehrungenEnum.SCR;
+			case "SDG" -> WaehrungenEnum.SDG;
+			case "SEK" -> WaehrungenEnum.SEK;
+			case "SGD" -> WaehrungenEnum.SGD;
+			case "SHP" -> WaehrungenEnum.SHP;
+			case "SLL" -> WaehrungenEnum.SLL;
+			case "SOS" -> WaehrungenEnum.SOS;
+			case "SRD" -> WaehrungenEnum.SRD;
+			case "STD" -> WaehrungenEnum.STD;
+			case "SVC" -> WaehrungenEnum.SVC;
+			case "SYP" -> WaehrungenEnum.SYP;
+			case "SZL" -> WaehrungenEnum.SZL;
+			case "THB" -> WaehrungenEnum.THB;
+			case "TJS" -> WaehrungenEnum.TJS;
+			case "TMT" -> WaehrungenEnum.TMT;
+			case "TND" -> WaehrungenEnum.TND;
+			case "TOP" -> WaehrungenEnum.TOP;
+			case "TRY" -> WaehrungenEnum.TRY;
+			case "TTD" -> WaehrungenEnum.TTD;
+			case "TWD" -> WaehrungenEnum.TWD;
+			case "TZS" -> WaehrungenEnum.TZS;
+			case "UAH" -> WaehrungenEnum.UAH;
+			case "UGX" -> WaehrungenEnum.UGX;
+			case "USD" -> WaehrungenEnum.USD;
+			case "UYU" -> WaehrungenEnum.UYU;
+			case "UZS" -> WaehrungenEnum.UZS;
+			case "VEF" -> WaehrungenEnum.VEF;
+			case "VND" -> WaehrungenEnum.VND;
+			case "VUV" -> WaehrungenEnum.VUV;
+			case "WST" -> WaehrungenEnum.WST;
+			case "XAF" -> WaehrungenEnum.XAF;
+			case "XCD" -> WaehrungenEnum.XCD;
+			case "XOF" -> WaehrungenEnum.XOF;
+			case "XPF" -> WaehrungenEnum.XPF;
+			case "YER" -> WaehrungenEnum.YER;
+			case "ZAR" -> WaehrungenEnum.ZAR;
+			case "ZMW" -> WaehrungenEnum.ZMW;
+			case "ZWL" -> WaehrungenEnum.ZWL;
+			default -> throw new IllegalArgumentException(enumName);
+		};
 	}
 }

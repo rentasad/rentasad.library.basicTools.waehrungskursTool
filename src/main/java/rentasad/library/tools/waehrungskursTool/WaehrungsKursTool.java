@@ -27,7 +27,6 @@ import org.json.JSONObject;
  */
 public class WaehrungsKursTool
 {
-    private static final int BUFFER_SIZE = 1024;
     private static final int HTTP_TIMEOUT_SECONDS = 30;
     private static final String API_BASE_URL = "https://openexchangerates.org/api/latest.json";
     private static final String API_KEY = System.getenv().getOrDefault("OPEN_EXCHANGE_RATES_API_KEY", "88170157fc564715821f0f7e54f6faf8");
@@ -48,24 +47,22 @@ public class WaehrungsKursTool
      */
     public static String readUrl(String urlString) throws IOException, InterruptedException
     {
-        HttpClient client = HttpClient.newBuilder()
+        try (HttpClient client = HttpClient.newBuilder()
                 .connectTimeout(Duration.ofSeconds(HTTP_TIMEOUT_SECONDS))
-                .build();
-
-        HttpRequest request = HttpRequest.newBuilder()
-                .uri(URI.create(urlString))
-                .timeout(Duration.ofSeconds(HTTP_TIMEOUT_SECONDS))
-                .GET()
-                .build();
-
-        HttpResponse<String> response = client.send(request, HttpResponse.BodyHandlers.ofString());
-
-        if (response.statusCode() != 200)
+                .build())
         {
-            throw new IOException("HTTP request failed with status code: " + response.statusCode());
-        }
 
-        return response.body();
+            HttpRequest request = HttpRequest.newBuilder().uri(URI.create(urlString)).timeout(Duration.ofSeconds(HTTP_TIMEOUT_SECONDS)).GET().build();
+
+            HttpResponse<String> response = client.send(request, HttpResponse.BodyHandlers.ofString());
+
+            if (response.statusCode() != 200)
+            {
+                throw new IOException("HTTP request failed with status code: " + response.statusCode());
+            }
+
+            return response.body();
+        }
     }
 
     public static String getJsonStringFromOpenExchangeRates() throws IOException, InterruptedException
