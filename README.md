@@ -31,7 +31,7 @@ Add this dependency to your `pom.xml`:
 <dependency>
     <groupId>rentasad.library</groupId>
     <artifactId>rentasad.library.basicTools.waehrungskursTool</artifactId>
-    <version>4.0.0</version>
+    <version>4.0.1</version>
 </dependency>
 ```
 
@@ -187,7 +187,7 @@ Originally created for Gustini GmbH (2015)
 
 ## Changelog
 
-### Version 4.0.0
+### Version 4.0.1
 - Migrated to Java 17+
 - Replaced legacy `URL.openStream()` with modern `HttpClient`
 - Externalized API key configuration
