@@ -53,19 +53,18 @@ public class WaehrungsKursTool
                 .GET()
                 .build();
 
-        try (HttpClient client = HttpClient.newBuilder()
+        HttpClient client = HttpClient.newBuilder()
                 .connectTimeout(Duration.ofSeconds(HTTP_TIMEOUT_SECONDS))
-                .build())
+                .build();
+
+        HttpResponse<String> response = client.send(request, HttpResponse.BodyHandlers.ofString());
+
+        if (response.statusCode() != 200)
         {
-            HttpResponse<String> response = client.send(request, HttpResponse.BodyHandlers.ofString());
-
-            if (response.statusCode() != 200)
-            {
-                throw new IOException("HTTP request failed with status code: " + response.statusCode());
-            }
-
-            return response.body();
+            throw new IOException("HTTP request failed with status code: " + response.statusCode());
         }
+
+        return response.body();
     }
 
     public static String getJsonStringFromOpenExchangeRates() throws IOException, InterruptedException
