@@ -15,8 +15,7 @@ public class WaehrungsKursToolTest
 	public void testGetWaehrungsKursItemFromOpenExchangeRates_ValidInput() throws MalformedURLException
 	{
 		String jsonString = "{ \"base\": \"USD\", \"timestamp\": 1609459200, \"rates\": { \"EUR\": 0.82, \"GBP\": 0.74 } }";
-		WaehrungsKursTool tool = new WaehrungsKursTool();
-		WaehrungskursItem result = tool.getWaehrungsKursItemFromOpenExchangeRates(jsonString);
+		WaehrungskursItem result = WaehrungsKursTool.getWaehrungsKursItemFromOpenExchangeRates(jsonString);
 
 		// Validate base currency
 		Assertions.assertEquals(WaehrungenEnum.USD, result.getBaseCurrencyEnum());
@@ -36,8 +35,7 @@ public class WaehrungsKursToolTest
 	public void testGetWaehrungsKursItemFromOpenExchangeRates_MissingRates() throws MalformedURLException
 	{
 		String jsonString = "{ \"base\": \"USD\", \"timestamp\": 1609459200, \"rates\": { } }";
-		WaehrungsKursTool tool = new WaehrungsKursTool();
-		WaehrungskursItem result = tool.getWaehrungsKursItemFromOpenExchangeRates(jsonString);
+		WaehrungskursItem result = WaehrungsKursTool.getWaehrungsKursItemFromOpenExchangeRates(jsonString);
 
 		// Validate base currency
 		Assertions.assertEquals(WaehrungenEnum.USD, result.getBaseCurrencyEnum());
@@ -55,10 +53,9 @@ public class WaehrungsKursToolTest
 	public void testGetWaehrungsKursItemFromOpenExchangeRates_InvalidBaseCurrency() throws MalformedURLException
 	{
 		String jsonString = "{ \"base\": \"INVALID\", \"timestamp\": 1609459200, \"rates\": { \"EUR\": 0.82, \"GBP\": 0.74 } }";
-		WaehrungsKursTool tool = new WaehrungsKursTool();
 
 		Assertions.assertThrows(IllegalArgumentException.class, () -> {
-			tool.getWaehrungsKursItemFromOpenExchangeRates(jsonString);
+			WaehrungsKursTool.getWaehrungsKursItemFromOpenExchangeRates(jsonString);
 		});
 	}
 
@@ -66,11 +63,10 @@ public class WaehrungsKursToolTest
 	public void testGetWaehrungsKursItemFromOpenExchangeRates_InvalidJsonFormat() throws MalformedURLException
 	{
 		String jsonString = "{ \"bas\": \"USD\", \"timestamp\": 1609459200, \"rates\": { \"EUR\": 0.82, \"GBP\": 0.74 } }";
-		WaehrungsKursTool tool = new WaehrungsKursTool();
 
 
 		Assertions.assertThrows(JSONException.class, () -> {
-			tool.getWaehrungsKursItemFromOpenExchangeRates(jsonString);
+			WaehrungsKursTool.getWaehrungsKursItemFromOpenExchangeRates(jsonString);
 		});
 	}
 }

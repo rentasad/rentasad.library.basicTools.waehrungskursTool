@@ -1,16 +1,16 @@
 package rentasad.library.tools.waehrungskursTool;
 
-import java.io.BufferedReader;
 import java.io.IOException;
-import java.io.InputStreamReader;
-import java.net.MalformedURLException;
-import java.net.URL;
+import java.net.URI;
+import java.net.http.HttpClient;
+import java.net.http.HttpRequest;
+import java.net.http.HttpResponse;
+import java.time.Duration;
+import java.util.Arrays;
 import java.util.Calendar;
 import java.util.GregorianCalendar;
 
 import org.json.JSONObject;
-
-//import com.extendedsystems.jdbc.advantage.ADSConnection;
 
 /**
  * 
@@ -27,12 +27,15 @@ import org.json.JSONObject;
  */
 public class WaehrungsKursTool
 {
-    public final String jsonURLString;
+    private static final int BUFFER_SIZE = 1024;
+    private static final int HTTP_TIMEOUT_SECONDS = 30;
+    private static final String API_BASE_URL = "https://openexchangerates.org/api/latest.json";
+    private static final String API_KEY = System.getenv().getOrDefault("OPEN_EXCHANGE_RATES_API_KEY", "88170157fc564715821f0f7e54f6faf8");
+    public static final String JSON_URL_STRING = API_BASE_URL + "?app_id=" + API_KEY;
 
-    public WaehrungsKursTool() throws MalformedURLException
+    private WaehrungsKursTool()
     {
         super();
-        this.jsonURLString = "https://openexchangerates.org/api/latest.json?app_id=88170157fc564715821f0f7e54f6faf8";
     }
 
     /**
@@ -41,31 +44,33 @@ public class WaehrungsKursTool
      * @param urlString the URL to read from
      * @return the content read from the URL as a string
      * @throws IOException if an I/O exception occurs
+     * @throws InterruptedException if the HTTP request is interrupted
      */
-    public static String readUrl(String urlString) throws IOException
+    public static String readUrl(String urlString) throws IOException, InterruptedException
     {
-        BufferedReader reader = null;
-        try
-        {
-            URL url = new URL(urlString);
-            reader = new BufferedReader(new InputStreamReader(url.openStream()));
-            StringBuilder buffer = new StringBuilder();
-            int read;
-            char[] chars = new char[1024];
-            while ((read = reader.read(chars)) != -1)
-                buffer.append(chars, 0, read);
+        HttpClient client = HttpClient.newBuilder()
+                .connectTimeout(Duration.ofSeconds(HTTP_TIMEOUT_SECONDS))
+                .build();
 
-            return buffer.toString();
-        } finally
+        HttpRequest request = HttpRequest.newBuilder()
+                .uri(URI.create(urlString))
+                .timeout(Duration.ofSeconds(HTTP_TIMEOUT_SECONDS))
+                .GET()
+                .build();
+
+        HttpResponse<String> response = client.send(request, HttpResponse.BodyHandlers.ofString());
+
+        if (response.statusCode() != 200)
         {
-            if (reader != null)
-                reader.close();
+            throw new IOException("HTTP request failed with status code: " + response.statusCode());
         }
+
+        return response.body();
     }
 
-    public String getjsonStringFromOpenExchangeRates() throws IOException
+    public static String getJsonStringFromOpenExchangeRates() throws IOException, InterruptedException
     {
-        return readUrl(this.jsonURLString);
+        return readUrl(JSON_URL_STRING);
     }
 
     /**
@@ -73,35 +78,32 @@ public class WaehrungsKursTool
      *
      * @param jsonObjectString JSON string containing currency rates data.
      * @return A WaehrungskursItem containing the currency rates and base currency information.
+     * @throws IllegalArgumentException if the JSON format is invalid or base currency is unknown
      */
-    public WaehrungskursItem getWaehrungsKursItemFromOpenExchangeRates(String jsonObjectString)
+    public static WaehrungskursItem getWaehrungsKursItemFromOpenExchangeRates(String jsonObjectString)
     {
-
-        JSONObject headObject = new JSONObject(jsonObjectString);
-        String base = headObject.getString("base");
-        WaehrungenEnum basEnum = WaehrungenEnum.valueOf(base);
-        long timeStamp = headObject.getLong("timestamp") * 1000;
-        Calendar timeCalendar = new GregorianCalendar();
-        timeCalendar.setTimeInMillis(timeStamp);
-        JSONObject ratesObject = headObject.getJSONObject("rates");
-        WaehrungskursItem kursItem = new WaehrungskursItem(timeCalendar.getTime(), basEnum);
-        for (WaehrungenEnum waehrungItem : WaehrungenEnum.values())
+        try
         {
-            /**
-             * 10.05.2017
-             * Falls eine Währung in der Währungsabfrage nicht mehr existiert oder auftaucht, wird sie ignoriert
-             * und das Programm stürzt nicht ab
-             * 
-             */
-            if (ratesObject.keySet().contains(waehrungItem.name()))
-            {
-                kursItem.getRatesMap().put(waehrungItem, ratesObject.getDouble(waehrungItem.name()));
-            }
+            JSONObject headObject = new JSONObject(jsonObjectString);
+            String base = headObject.getString("base");
+            WaehrungenEnum basEnum = WaehrungenEnum.valueOf(base);
+            long timeStamp = headObject.getLong("timestamp") * 1000;
+            Calendar timeCalendar = new GregorianCalendar();
+            timeCalendar.setTimeInMillis(timeStamp);
+            JSONObject ratesObject = headObject.getJSONObject("rates");
+            WaehrungskursItem kursItem = new WaehrungskursItem(timeCalendar.getTime(), basEnum);
 
+            // Use Stream API to populate rates map, ignoring currencies not present in response
+            Arrays.stream(WaehrungenEnum.values())
+                    .filter(waehrungItem -> ratesObject.has(waehrungItem.name()))
+                    .forEach(waehrungItem ->
+                            kursItem.getRatesMap().put(waehrungItem, ratesObject.getDouble(waehrungItem.name())));
+
+            return kursItem;
         }
-        return kursItem;
+        catch (IllegalArgumentException e)
+        {
+            throw new IllegalArgumentException("Invalid currency base or malformed JSON: " + e.getMessage(), e);
+        }
     }
-    
-
-
 }
